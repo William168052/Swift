@@ -70,23 +70,15 @@ class SiriWaveView: UIView {
         let ctx = UIGraphicsGetCurrentContext()
         let lineWidth = self.waveWidth!
         
-        //创建一个path
-//        let path = CGMutablePath.init()
-        
         for numIdx in 1...waveNumber {
             //保存原始状态到图形上下文栈
             ctx?.saveGState()
-            //设置线条宽度
-//            self.waveShapeLayer?.lineWidth = CGFloat(self.waveWidth! / Float(numIdx))
-            
             
             //设置描边颜色及其透明度
             let strokeAlpha = CGFloat(1 / sqrt(Float(waveNumber - numIdx + 1)))
             self.strokeColor?.withAlphaComponent(strokeAlpha).setStroke()
-//            self.waveShapeLayer?.strokeColor = self.strokeColor!.cgColor
             //设置填充颜色
             self.fillColor?.setFill()
-//            self.waveShapeLayer?.fillColor = self.fillColor!.cgColor
             //设置线条粗细
             ctx?.setLineWidth(CGFloat(sqrt(lineWidth) * Float(numIdx)))
 
@@ -114,13 +106,11 @@ class SiriWaveView: UIView {
 
                 
                 if i == Int((self.waveEdgeInset?.left)!) {
-//                    path.move(to: CGPoint.init(x: CGFloat(i), y:(CGFloat)(Y)))
                     ctx!.move(to: CGPoint.init(x: CGFloat(i), y:(CGFloat)(Y)))
                 }
-                
-//                path.addLine(to: CGPoint.init(x: (CGFloat)(i), y: (CGFloat)(Y)))
+
                 ctx!.addLine(to: CGPoint.init(x: (CGFloat)(i), y: (CGFloat)(Y)))
-                //            print("i : \(i)-------y : \(Y)")
+
             }
             
             ctx?.strokePath()
@@ -130,10 +120,7 @@ class SiriWaveView: UIView {
         //从图形上下文栈恢复原始状态
         ctx?.restoreGState()
         
-//        self.waveShapeLayer?.path = path;
-        
-        
-//        self.layer.addSublayer(self.waveShapeLayer!)
+
         
         
     }

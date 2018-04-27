@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
     
     var wave : SiriWaveView?
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +23,7 @@ class ViewController: UIViewController {
         wave?.backgroundColor = UIColor.clear
         
         self.view.addSubview(self.wave!)
-        self.wave?.wavePlay()
+        
         
     }
     
